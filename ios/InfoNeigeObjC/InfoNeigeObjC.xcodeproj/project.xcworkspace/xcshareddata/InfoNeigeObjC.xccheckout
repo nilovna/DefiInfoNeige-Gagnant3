@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>331787D6-00B0-4D39-A674-56AEC2AC406B</string>
+	<key>IDESourceControlProjectName</key>
+	<string>InfoNeigeObjC</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>7A6C85EA-4A25-400F-B6A7-E43B31D50AB8</key>
+		<string>https://github.com/nilovna/info-neige.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>iOS Client/InfoNeigeObjC/InfoNeigeObjC.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>7A6C85EA-4A25-400F-B6A7-E43B31D50AB8</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/nilovna/info-neige.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>7A6C85EA-4A25-400F-B6A7-E43B31D50AB8</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>7A6C85EA-4A25-400F-B6A7-E43B31D50AB8</string>
+			<key>IDESourceControlWCCName</key>
+			<string>infoneige</string>
+		</dict>
+	</array>
+</dict>
+</plist>

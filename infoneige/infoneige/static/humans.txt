@@ -1,0 +1,34 @@
+/* TEAM */
+Web Developer: Daniel LeBlanc 
+Site: http://danidou.com
+Twitter: @danidou
+Location: Montréal, Québec, Canada
+
+iOS Developer: Huynh Van Du Tran
+Site:
+Twitter:
+Location:
+
+Design/UX: Jean-François Poulin
+Site: jfpoulin.com
+Twitter: @jeffpoulin
+Location: Montréal, Québec, Canada
+
+Web Integrator: Nilovna Bascunan-Vasquez @nilovna
+Site: http://nilovna.com
+Twitter: @nilovna
+Location: Montréal, Québec, Canada
+
+/* THANKS */
+CTRL+WEB: http://ctrlweb.ca
+Quartier Hochelaga: http://quartierhochelaga.com/
+Ville de Montréal: http://ville.montreal.qc.ca/
+
+/* SITE */
+Last update: 2014-07-14
+Standards: HTML5, CSS3, SASS
+Components: Pyramid, Modernizr, jQuery
+Software: vim, Sublime Text
+
+/* iOS APP */
+Last update: 

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="${request.locale_name}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="description" content="Chasse ta neige">
+    <meta name="author" content="NBV,JFP,DL,VDT">
+    <link rel="shortcut icon" href="${request.static_url('infoneige:static/pyramid-16x16.png')}">
+
+    <title>Chasse ta neige</title>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="//oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" href="${request.static_url('infoneige:static/stylesheets/reset.css')}">
+    <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.css" />
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,500,900' rel='stylesheet' type='text/css'>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="${request.static_url('infoneige:static/stylesheets/blue.css')}" rel="stylesheet">
+    <link rel="stylesheet" href="${request.static_url('infoneige:static/stylesheets/style.css')}">
+
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v2/themes/css/cartodb.ie.css" />
+    <![endif]-->
+  </head>
+
+  <body touch-action="auto">
+
+    <div class="header">
+      <div class="right-side-options">
+        <button id="btn-favoris" class="btn-main">
+          <i class="fa fa-star"></i>
+        </button>
+      </div>
+      <div class="search-input-wrapper">
+        <input type="search" autofocus="autofocus" autocomplete="on" id="search-destination" tabindex="1" placeholder="Destination">
+      </div>
+    </div>
+
+    <div class="options">
+      <button id="btn-settings" class="btn-main">
+        <i class="fa fa-cog"></i>
+      </button>
+      <button id="btn-questions" class="btn-main">
+        <i class="fa fa-question"></i>
+      </button>
+      <button id="btn-geolocation" class="btn-main">
+        <i class="fa fa-crosshairs"></i>
+      </button>
+      <button id="btn-help" class="btn-main">
+        <img src="${request.static_url('infoneige:static/images/pelle.png')}" width="28">
+      </button>
+    </div>
+    <div id='cartodb-map'></div>
+
+    <div id="dialog-questions">
+      <div class="option-section">
+        <p>Vous éprouvez des difficultés avec l'application ou vous avez des commentaires
+        ou suggestions à nous faire?</p>
+        <p>Envoyez-nous un message et nous vous contacterons dans les plus brefs délais.</p>
+        <div class="option-item">
+          <label class="caption">Message</label>
+          <textarea rows="5" placeholder="Votre message ici" autofocus="autofocus"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div id="dialog-help">
+      <p>Vos voisins à proximité seront notifiés afin de vous venir en aide.</p>
+      <label class="caption">Pour quelle raison avez-vous besoin d'aide?</label>
+      <input type="text">
+    </div>
+
+    <div id="dialog-help-confirmation">
+      <p>Vos voisins ont été notifiés!</p>
+      <p>Croisez les doigts, ils viendront vous aider s'ils sont disponibles.</p>
+    </div>
+
+    <div id="dialog-questions-confirmation">
+      <p style="font-weight:700;">Merci d'avoir communiqué avec nous. Nous vous recontacterons d'ici 48h.</p>
+      <p>Si vous n'avez pas de retour, vous pouvez nous joindre par :
+      <ul>
+        <li>Téléphone: <a style="margin-left:12px;" href="tel:514-922-3333">514-922-3333</a></li>
+        <li>Email: <a style="margin-left:48px;" href="mailto:info@chassetaneige.com">info@chassetaneige.com</a></li>
+      </ul>
+      </p>
+    </div>
+
+    <div id="dialog-favoris"> 
+      <div class="option-section"> 
+        <h3 class="subhead">Destination</h3>
+        <div class="option-item">
+          <i class="fa fa-map-marker"></i>
+          <div class="option-detail">
+            <p class="primary-text">Sainte-Catherine Est</p>
+            <p class="secondary-text">Près de 0000-0000</p>
+          </div>
+          <div class="option-status">
+            <div class="status-side side-1">N</div>
+            <div class="status-side side-2">S</div>
+          </div>
+        </div>
+
+        <div class="option-item">
+          <i class="fa fa-map-marker"></i>
+          <div class="option-detail">
+            <p class="primary-text">René-Lévesque</p>
+            <p class="secondary-text">Près de 0000-0000</p>
+          </div>
+          <div class="option-status">
+            <div class="status-side side-1">N</div>
+            <div class="status-side side-2">S</div>
+          </div>
+        </div>
+
+        <div class="option-item">
+          <i class="fa fa-map-marker"></i>
+          <div class="option-detail">
+            <p class="primary-text">Louis-Veuillot</p>
+            <p class="secondary-text">Près de 0000-0000</p>
+          </div>
+          <div class="option-status">
+            <div class="status-side side-1">E</div>
+            <div class="status-side side-2">O</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="dialog-settings">
+      <div id="tabs">
+        <ul>
+          <li>
+            <a href="#tabs-alertes">
+              <h3 class="subhead">Mes alertes</h3>
+            </a>
+            <div id="tabs-alertes">
+              <div class="option-section">
+                <div class="option-item">
+                  <input type="checkbox" id="sms_option"> 
+                  <div class="option-input">
+                    <label class="caption">SMS</label>
+                    <input type="tel" placeholder="514-999-9999">
+                  </div>
+                </div>
+
+                <div class="option-item">
+                  <input type="checkbox" id="email_option" style="float:left;"> 
+                  <div class="option-input">
+                    <label class="caption">Courriel</label>
+                    <input type="email" placeholder="exemple@exemple.com">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <a href="#tabs-stationnement">
+              <h3 class="subhead">Option de stationnement</h3>
+            </a>
+            <div id="tabs-stationnement">
+              <div class="option-section option-stationnement">
+                <div class="option-item">
+                  <input type="checkbox" id="stationnement_option"> 
+                  <div class="option-input">
+                    <p>Vous proposer une option de stationnement si votre rue
+                      n'est pas disponible.</p>
+                    <label class="caption">À un délai de marche de:</label>
+                    <input type="range">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <a href="#tabs-aide-quartier">
+              <h3 class="subhead">J'aide mon quartier</h3>
+            </a>
+            <div id="tabs-aide-quartier">
+              <div class="option-section">
+                <div class="option-item">
+                  <input type="checkbox" id="help_option"> 
+                  <div class="option-input">
+                    <p>En cas de besoin, je désire venir en aide à mes voisins à proximité.</p>
+                    <label class="caption">À un délai de marche de:</label>
+                    <input type="range">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+      
+    
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//code.jquery.com/ui/1.11.0/jquery-ui.min.js"></script>
+    <script src="http://libs.cartocdn.com/cartodb.js/v3/cartodb.js"></script>
+    <script src="${request.static_url('infoneige:static/javascript/icheck.min.js')}"></script>
+    <script src="${request.static_url('infoneige:static/javascript/script.js')}"></script>
+  </body>
+</html>
